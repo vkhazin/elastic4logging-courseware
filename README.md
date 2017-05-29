@@ -5,17 +5,17 @@ Elastic Search has become a favorite in the realm of search engines by broadenin
 Easy to use for any developer combined with powerful query language made Elastic Search an attractive choice for agile teams  
 Automatic sharding, replication, and healing makes Elastic Search rewarding to configure and to operate for system administrators  
 Filebeat and Logstash for data ingest makes Elastic product suite appealing for logs processing and aggregation  
-Kibana rich Search and Dashboard cababilities facilitates logs monitoring and processing  
+Kibana rich Search, Visualization and Dashboard cababilities facilitates logs monitoring and processing  
 Watcher in X-Pack streamlines alerting and discovery of trends and/or abnormalities
 
 
 ## Audience ##
 * Developers who wants to be familiar with NoSQL Databases and with modern Search Engines
 * Operations and DevOps looking for a way to monitor logs and to react to abnoramlities
-* Architects who are familiar with Relational Data Modeling, but who have little experience with new Polyglot Persistence model
+* Architects who are familiar with Relational Data Modeling, but have little experience with Polyglot Persistence model and/or with Search Engines
 
 ## Course's Objectives ##
-* Bring Elastic Search novices to the level where they would feel familiar with installing, configuring and using Elastic products
+* Bring Elastic Search novices to the level where they are familiar with installing, configuring and using Elastic products
 * Explore ElasticSearch Dsl: query, filter, and aggregation
 * Install and configure Logstash and Filebeat for logs ingest 
 * Install and configure Kibana for data analysis
@@ -63,4 +63,5 @@ Watcher in X-Pack streamlines alerting and discovery of trends and/or abnormalit
 ### Preparing for Production ###
 * Discussion on capacity planning and data population
 * Performance tuning and monitoring
-* Aws hosted Elastic Search
+* Hosted Elastic Search
+* Elastic Search in a Docker Container
