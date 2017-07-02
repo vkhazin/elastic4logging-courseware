@@ -23,7 +23,7 @@ Watcher in X-Pack streamlines alerting and discovery of trends and/or abnormalit
 
 ## Prerequisites ##
 * Recent hands-on experience with Linux bash terminal
-* Familiarity with JSON and logs data formats
+* Familiarity with JSON and log data formats
 * Recent administrative and troubleshooting experience on Linux OS
 * Scripting and/or programming hands-on recent experience
 
