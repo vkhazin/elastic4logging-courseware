@@ -1,4 +1,4 @@
-# Chapter 0: Overview #
+# Chapter Overview #
 
 * Why ElasticSearch
 * Intended audience
