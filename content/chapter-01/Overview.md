@@ -1,4 +1,4 @@
-# Chapter Overview #
+# Chapter 1: Overview #
 
 * Terminology, basic concepts, implementation, setup, and basic operations.
 * Data modeling with ElasticSearch

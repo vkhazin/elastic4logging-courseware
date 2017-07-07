@@ -1,4 +1,4 @@
-# Chapter Summary #
+# Chapter 1: Summary #
 
 * What problems ElasticSearch solves?
 * Can I replace my database with ElasticSearch?

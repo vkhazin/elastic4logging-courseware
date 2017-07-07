@@ -40,12 +40,6 @@ Watcher in X-Pack streamlines alerting and discovery of trends and/or abnormalit
 * Overview of Filter DSL compared to Query DSL
 * Syntax for Aggregation Queries
 
-### Kibana ###
-* Setup and configuration
-* Discover
-* Visualize
-* Dashboard
-
 ### Logstash ###
 * Setup and initial configuration
 * Configuring logs transformation
@@ -55,6 +49,12 @@ Watcher in X-Pack streamlines alerting and discovery of trends and/or abnormalit
 * Setup and initial configuration
 * Sending logs to Elastic Search using Filebeat
 * Using Kibana to visualize logs data
+
+### Kibana ###
+* Setup and configuration
+* Discover
+* Visualize
+* Dashboard
 
 ### Watcher ###
 * Setup and configuration
