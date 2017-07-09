@@ -10,3 +10,4 @@
 * You can also use private ssh key emailed to you before the course
   * <a href="https://www.electrictoolbox.com/putty-rsa-dsa-keys/" target="_blank">How to import private key using Putty</a>
   * Setting permissions on Linux/MacOs: ```chmod 600 /path/to/private-key/file```
+* Another option is to use <a href="https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo?utm_source=chrome-ntp-icon" target="_blank">Secure Shell Chrome Extension to launch in-browser ssh></a>
