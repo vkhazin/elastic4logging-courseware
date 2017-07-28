@@ -1,12 +1,12 @@
 # Nested Datatype #
 
-* Nested is a specialized version of the 'object' datatype that allows querying of arrays of objects to be queried independently
+* Nested is a specialized version of 'object' datatype that allows querying of arrays of objects independently one from another
 * Lucene has no concept of inner objects and hence data is flattened when being indexed with not quite as expected behavior.
 * Data posted
 ```
 {
   "group" : "fans",
-  "user" : [ 
+  "members" : [ 
     {
       "first" : "John",
       "last" :  "Smith"
@@ -22,9 +22,9 @@
 ```
 {
   "group" :        "fans",
-  "user.first" : [ "alice", "john" ],
-  "user.last" :  [ "smith", "white" ]
+  "members.first" : [ "alice", "john" ],
+  "members.last" :  [ "smith", "white" ]
 }
 ```
 * What you think would be a consequence of such indexing? 
-* Should you be able to find person 'John White'?
+* Should you be able to find person ```John White``` or ```Alice Smith```?

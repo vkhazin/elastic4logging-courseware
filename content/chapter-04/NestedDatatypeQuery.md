@@ -1,20 +1,18 @@
 # Nested Datatype Querying #
 
-* The query against nested objects is executed as if the nested documents were indexed independently from the parent document:
+* The query against nested objects is executed as if the nested documents were indexed independently from the parent document and one from another:
 ```
 {
-  "nested" : {
-    "path" : "user",
-    "query" : {
-      "bool" : {
-        "must" : [
-          {
-              "match" : {"user.first" : "John"}
-          },
-          {
-              "match" : {"user.last" : "Smith"}
-          }
-        ]
+  "query": {
+    "nested": {
+      "path": "members",
+      "query": {
+        "bool": {
+          "must": [
+            { "match": { "members.first": "John" }},
+            { "match": { "members.last":  "Smith" }} 
+          ]
+        }
       }
     }
   }

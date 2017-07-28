@@ -23,7 +23,7 @@ sudo service kibana start
 ```
 * Populate sample data:
 ```
-curl https://elasticsearch-courseware.icssolutions.ca/examples/data-sets/logs.json -o logs.json
+curl https://s3.us-east-2.amazonaws.com/elasticsearch-courseware/sample-data/logs.json -o logs.json
 curl -XPOST 'localhost:9200/_bulk' --data-binary "@logs.json"
 ```
 * By default Kibana listens to localhost and it won't be really helpful in most environments

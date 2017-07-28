@@ -1,0 +1,49 @@
+curl -XPOST http://localhost:9200/_bulk -d '{"index":{"_index":"sampledata","_type":"nested", "_id":"fans"}}
+{"group":"fans","people":[{"first":"John","last":"Smith"},{"first":"Alice","last":"White"}]}
+{"index":{"_index":"sampledata","_type":"nested", "_id":"supporters"}}
+{"group":"supporters","people":[{"first":"Jane","last":"Smith"},{"first":"Karen","last":"White"}]}
+{"index":{"_index":"sampledata","_type":"nested", "_id":"followers"}}
+{"group":"followers","people":[{"first":"John","last":"Garcia"},{"first":"Karen","last":"Wang"}]}
+'
+
+{
+  "group" : "fans",
+  "people" : [ 
+    {
+      "first" : "John",
+      "last" :  "Smith"
+    },
+    {
+      "first" : "Alice",
+      "last" :  "White"
+    }
+  ]
+}'
+
+curl -XPOST http://localhost:9200/nested-data/groups -d '{
+  "group" : "supporters",
+  "people" : [ 
+    {
+      "first" : "Jane",
+      "last" :  "Smith"
+    },
+    {
+      "first" : "Karen",
+      "last" :  "White"
+    }
+  ]
+}'
+
+curl -XPOST http://localhost:9200/nested-data/groups -d '{
+  "group" : "supporters",
+  "people" : [ 
+    {
+      "first" : "John",
+      "last" :  "Garcia"
+    },
+    {
+      "first" : "Karen",
+      "last" :  "Wang"
+    }
+  ]
+}'

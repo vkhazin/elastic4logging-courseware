@@ -1837,12 +1837,233 @@
 <li>Log-in into your ElasticSearch sandbox</li>
 <li>Make sure elastic search is running:<pre><code>sudo service elasticsearch restart
 </code></pre></li>
-<li>Can we reuse any of existing data?</li>
-<li>Demo search without nested document mapping to demo imperfection</li>
-<li>Delete index</li>
-<li>Create index with mapping for nested type</li>
-<li>Re-populate data</li>
-<li>Demo more accurate search results with nested document mapping</li>
+<li>Populate data using <code>_bulk</code> api:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
+{&quot;group&quot;:&quot;fans&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;White&quot;}]}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
+{&quot;group&quot;:&quot;supporters&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;White&quot;}]}
+&apos;
+</code></pre></li>
+<li>Confirm data has been populated:<pre><code>curl &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos;
+</code></pre></li>
+<li>Expected result:<pre><code>{
+&quot;took&quot; : 2,
+&quot;timed_out&quot; : false,
+&quot;_shards&quot; : {
+  &quot;total&quot; : 5,
+  &quot;successful&quot; : 5,
+  &quot;failed&quot; : 0
+},
+&quot;hits&quot; : {
+  &quot;total&quot; : 2,
+  &quot;max_score&quot; : 1.0,
+  &quot;hits&quot; : [
+    {
+      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_type&quot; : &quot;groups&quot;,
+      &quot;_id&quot; : &quot;supporters&quot;,
+      &quot;_score&quot; : 1.0,
+      &quot;_source&quot; : {
+        &quot;group&quot; : &quot;supporters&quot;,
+        &quot;members&quot; : [
+          {
+            &quot;first&quot; : &quot;Alice&quot;,
+            &quot;last&quot; : &quot;Smith&quot;
+          },
+          {
+            &quot;first&quot; : &quot;John&quot;,
+            &quot;last&quot; : &quot;White&quot;
+          }
+        ]
+      }
+    },
+    {
+      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_type&quot; : &quot;groups&quot;,
+      &quot;_id&quot; : &quot;fans&quot;,
+      &quot;_score&quot; : 1.0,
+      &quot;_source&quot; : {
+        &quot;group&quot; : &quot;fans&quot;,
+        &quot;members&quot; : [
+          {
+            &quot;first&quot; : &quot;John&quot;,
+            &quot;last&quot; : &quot;Smith&quot;
+          },
+          {
+            &quot;first&quot; : &quot;Alice&quot;,
+            &quot;last&quot; : &quot;White&quot;
+          }
+        ]
+      }
+    }
+  ]
+}
+}
+</code></pre></li>
+<li>Let&apos;s find group with <code>John Smith</code> in it:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+{
+&quot;query&quot; : {
+    &quot;bool&quot; : {
+      &quot;must&quot; : [
+        {
+            &quot;match&quot; : {&quot;members.first&quot; : &quot;John&quot;}
+        },
+        {
+            &quot;match&quot; : {&quot;members.last&quot; : &quot;Smith&quot;}
+        }
+      ]
+    }
+  }
+}
+}&apos;
+</code></pre></li>
+<li>Expected result from Lucene&apos;s perspective:<pre><code>{
+&quot;took&quot; : 3,
+&quot;timed_out&quot; : false,
+&quot;_shards&quot; : {
+  &quot;total&quot; : 5,
+  &quot;successful&quot; : 5,
+  &quot;failed&quot; : 0
+},
+&quot;hits&quot; : {
+  &quot;total&quot; : 2,
+  &quot;max_score&quot; : 0.51623213,
+  &quot;hits&quot; : [
+    {
+      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_type&quot; : &quot;groups&quot;,
+      &quot;_id&quot; : &quot;supporters&quot;,
+      &quot;_score&quot; : 0.51623213,
+      &quot;_source&quot; : {
+        &quot;group&quot; : &quot;supporters&quot;,
+        &quot;members&quot; : [
+          {
+            &quot;first&quot; : &quot;Alice&quot;,
+            &quot;last&quot; : &quot;Smith&quot;
+          },
+          {
+            &quot;first&quot; : &quot;John&quot;,
+            &quot;last&quot; : &quot;White&quot;
+          }
+        ]
+      }
+    },
+    {
+      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_type&quot; : &quot;groups&quot;,
+      &quot;_id&quot; : &quot;fans&quot;,
+      &quot;_score&quot; : 0.51623213,
+      &quot;_source&quot; : {
+        &quot;group&quot; : &quot;fans&quot;,
+        &quot;members&quot; : [
+          {
+            &quot;first&quot; : &quot;John&quot;,
+            &quot;last&quot; : &quot;Smith&quot;
+          },
+          {
+            &quot;first&quot; : &quot;Alice&quot;,
+            &quot;last&quot; : &quot;White&quot;
+          }
+        ]
+      }
+    }
+  ]
+}
+}
+</code></pre></li>
+<li>Is that the expected result from human perspective?</li>
+<li>To address the imperfection in the results we will recreate the index with nested mapping</li>
+<li>Delete the index:<pre><code>curl -XDELETE &apos;localhost:9200/sampledata&apos;
+</code></pre></li>
+<li>Re-create the index with mapping for nested type:<pre><code>curl -XPUT &apos;localhost:9200/sampledata&apos; -d &apos;
+{
+&quot;mappings&quot;: {
+  &quot;groups&quot;: {
+    &quot;properties&quot;: {
+      &quot;members&quot;: {
+        &quot;type&quot;: &quot;nested&quot;
+      }
+    }
+  } 
+}
+}&apos;
+</code></pre></li>
+<li>Re-populate sample data:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
+{&quot;group&quot;:&quot;fans&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;White&quot;}]}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
+{&quot;group&quot;:&quot;supporters&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;White&quot;}]}
+&apos;
+</code></pre></li>
+<li>Re-run the query:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+{
+&quot;query&quot; : {
+    &quot;bool&quot; : {
+      &quot;must&quot; : [
+        {
+            &quot;match&quot; : {&quot;members.first&quot; : &quot;John&quot;}
+        },
+        {
+            &quot;match&quot; : {&quot;members.last&quot; : &quot;Smith&quot;}
+        }
+      ]
+    }
+  }
+}
+}&apos;
+</code></pre></li>
+<li>What results did you get?</li>
+<li>Nested query uses different syntax:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+{
+&quot;query&quot;: {
+  &quot;nested&quot;: {
+    &quot;path&quot;: &quot;members&quot;,
+    &quot;query&quot;: {
+      &quot;bool&quot;: {
+        &quot;must&quot;: [
+          { &quot;match&quot;: { &quot;members.first&quot;: &quot;John&quot; }},
+          { &quot;match&quot;: { &quot;members.last&quot;:  &quot;Smith&quot; }} 
+        ]
+      }
+    }
+  }
+}
+}&apos;
+</code></pre></li>
+<li>Expected Results:<pre><code>{
+&quot;took&quot; : 6,
+&quot;timed_out&quot; : false,
+&quot;_shards&quot; : {
+  &quot;total&quot; : 5,
+  &quot;successful&quot; : 5,
+  &quot;failed&quot; : 0
+},
+&quot;hits&quot; : {
+  &quot;total&quot; : 1,
+  &quot;max_score&quot; : 1.3862944,
+  &quot;hits&quot; : [
+    {
+      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_type&quot; : &quot;groups&quot;,
+      &quot;_id&quot; : &quot;fans&quot;,
+      &quot;_score&quot; : 1.3862944,
+      &quot;_source&quot; : {
+        &quot;group&quot; : &quot;fans&quot;,
+        &quot;members&quot; : [
+          {
+            &quot;first&quot; : &quot;John&quot;,
+            &quot;last&quot; : &quot;Smith&quot;
+          },
+          {
+            &quot;first&quot; : &quot;Alice&quot;,
+            &quot;last&quot; : &quot;White&quot;
+          }
+        ]
+      }
+    }
+  ]
+}
+}
+</code></pre></li>
+<li>Is nested mapping worth the hassle?</li>
 </ul>
 
                                 
@@ -1887,7 +2108,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-07-09T15:29:04.115Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T13:00:50.377Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-07-28T22:28:05.224Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T21:56:12.101Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div><center>
