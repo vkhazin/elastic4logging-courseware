@@ -1,5 +1,7 @@
 # Tile Map #
 
+//TODO: revise location and content of the sample file
+
 * Possibly the most interesting visualization
 * Requires mappings to be configured with geo_point type
 * For previously populated log data cannot modify mapping for coordinates

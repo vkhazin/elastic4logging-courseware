@@ -1833,7 +1833,7 @@
                                 
                                 <h1 id="nested-datatype-querying">Nested Datatype Querying</h1>
 <ul>
-<li>The query against nested objects is executed as if the nested documents were indexed independently from the parent document:<pre><code>{
+<li>The query against nested objects is executed as if the nested documents were indexed independently from the parent document and one from another:<pre><code>{
 &quot;query&quot;: {
   &quot;nested&quot;: {
     &quot;path&quot;: &quot;members&quot;,
@@ -1849,7 +1849,6 @@
 }
 }
 </code></pre></li>
-<li>Results will include all combinations: <code>John Smith</code> as expected, but also <code>Alice Smith</code> with <code>John White</code></li>
 <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html" target="_blank">Additional options available for nested datatype mapping, querying, and aggregation<a></a></a></li>
 </ul>
 
@@ -1895,10 +1894,24 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nested Datatype Query","level":"5.4","depth":1,"next":{"title":"Nested Search Exercise","level":"5.5","depth":1,"path":"content/chapter-04/NestedSearchEx.md","ref":"./content/chapter-04/NestedSearchEx.md","articles":[]},"previous":{"title":"Nested Datatype Mapping","level":"5.3","depth":1,"path":"content/chapter-04/NestedDatatypeMapping.md","ref":"./content/chapter-04/NestedDatatypeMapping.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedDatatypeQuery.md","mtime":"2017-07-28T22:30:33.893Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T21:56:12.101Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nested Datatype Query","level":"5.4","depth":1,"next":{"title":"Nested Search Exercise","level":"5.5","depth":1,"path":"content/chapter-04/NestedSearchEx.md","ref":"./content/chapter-04/NestedSearchEx.md","articles":[]},"previous":{"title":"Nested Datatype Mapping","level":"5.3","depth":1,"path":"content/chapter-04/NestedDatatypeMapping.md","ref":"./content/chapter-04/NestedDatatypeMapping.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedDatatypeQuery.md","mtime":"2017-07-28T22:36:16.001Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T22:46:12.516Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div><center>
+   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
+   </a>
+   <br>
+   <div>
+     Last modified: <a id="timestampvalue"></a>
+   </div>
+</center>
+
+<script type="text/javascript">
+  var timestamp = new Date(document.lastModified).toISOString();
+  document.getElementById("timestampvalue").textContent = timestamp;
+</script>
+<center>
    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
       <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
    </a>

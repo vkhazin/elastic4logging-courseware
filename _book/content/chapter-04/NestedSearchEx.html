@@ -1832,12 +1832,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="nested-search-exercise">Nested Search Exercise</h1>
-<p>//TODO: pending completion</p>
 <ul>
 <li>Log-in into your ElasticSearch sandbox</li>
 <li>Make sure elastic search is running:<pre><code>sudo service elasticsearch restart
 </code></pre></li>
-<li>Populate data using <code>_bulk</code> api:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
+<li>Populate sample data using <code>_bulk</code> api:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
 {&quot;group&quot;:&quot;fans&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;White&quot;}]}
 {&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
 {&quot;group&quot;:&quot;supporters&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;White&quot;}]}
@@ -1970,7 +1969,7 @@
 }
 }
 </code></pre></li>
-<li>Is that the expected result from human perspective?</li>
+<li>Is that the expected result from the human perspective?</li>
 <li>To address the imperfection in the results we will recreate the index with nested mapping</li>
 <li>Delete the index:<pre><code>curl -XDELETE &apos;localhost:9200/sampledata&apos;
 </code></pre></li>
@@ -2011,7 +2010,7 @@
 }&apos;
 </code></pre></li>
 <li>What results did you get?</li>
-<li>Nested query uses different syntax:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+<li>The reason for no results is that nested query uses different syntax:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
 {
 &quot;query&quot;: {
   &quot;nested&quot;: {
@@ -2063,7 +2062,7 @@
 }
 }
 </code></pre></li>
-<li>Is nested mapping worth the hassle?</li>
+<li>Is the nested document mapping worth the hassle?</li>
 </ul>
 
                                 
@@ -2108,10 +2107,24 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-07-28T22:28:05.224Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T21:56:12.101Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-07-28T22:37:43.977Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T22:46:12.516Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div><center>
+   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
+   </a>
+   <br>
+   <div>
+     Last modified: <a id="timestampvalue"></a>
+   </div>
+</center>
+
+<script type="text/javascript">
+  var timestamp = new Date(document.lastModified).toISOString();
+  document.getElementById("timestampvalue").textContent = timestamp;
+</script>
+<center>
    <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
       <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
    </a>

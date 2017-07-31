@@ -7,15 +7,15 @@ sudo service elasticsearch restart
 ```
 * Populate sample data using ```_bulk``` api:
 ```
-curl -XPOST http://localhost:9200/_bulk -d '{"index":{"_index":"sampledata","_type":"groups", "_id":"fans"}}
+curl -XPOST http://localhost:9200/_bulk -d '{"index":{"_index":"nested-data","_type":"groups", "_id":"fans"}}
 {"group":"fans","members":[{"first":"John","last":"Smith"},{"first":"Alice","last":"White"}]}
-{"index":{"_index":"sampledata","_type":"groups", "_id":"supporters"}}
+{"index":{"_index":"nested-data","_type":"groups", "_id":"supporters"}}
 {"group":"supporters","members":[{"first":"Alice","last":"Smith"},{"first":"John","last":"White"}]}
 '
 ```
 * Confirm data has been populated:
 ```
-curl 'http://localhost:9200/sampledata/groups/_search?pretty=true'
+curl 'http://localhost:9200/nested-data/groups/_search?pretty=true'
 ```
 * Expected result:
 ```
@@ -32,7 +32,7 @@ curl 'http://localhost:9200/sampledata/groups/_search?pretty=true'
     "max_score" : 1.0,
     "hits" : [
       {
-        "_index" : "sampledata",
+        "_index" : "nested-data",
         "_type" : "groups",
         "_id" : "supporters",
         "_score" : 1.0,
@@ -51,7 +51,7 @@ curl 'http://localhost:9200/sampledata/groups/_search?pretty=true'
         }
       },
       {
-        "_index" : "sampledata",
+        "_index" : "nested-data",
         "_type" : "groups",
         "_id" : "fans",
         "_score" : 1.0,
@@ -75,7 +75,7 @@ curl 'http://localhost:9200/sampledata/groups/_search?pretty=true'
 ```
 * Let's find group with ```John Smith``` in it:
 ```
-curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
+curl -XPOST 'http://localhost:9200/nested-data/groups/_search?pretty=true' -d '
 {
   "query" : {
       "bool" : {
@@ -107,7 +107,7 @@ curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
     "max_score" : 0.51623213,
     "hits" : [
       {
-        "_index" : "sampledata",
+        "_index" : "nested-data",
         "_type" : "groups",
         "_id" : "supporters",
         "_score" : 0.51623213,
@@ -126,7 +126,7 @@ curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
         }
       },
       {
-        "_index" : "sampledata",
+        "_index" : "nested-data",
         "_type" : "groups",
         "_id" : "fans",
         "_score" : 0.51623213,
@@ -152,11 +152,11 @@ curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
 * To address the imperfection in the results we will recreate the index with nested mapping
 * Delete the index:
 ```
-curl -XDELETE 'localhost:9200/sampledata'
+curl -XDELETE 'localhost:9200/nested-data'
 ```
 * Re-create the index with mapping for nested type:
 ```
-curl -XPUT 'localhost:9200/sampledata' -d '
+curl -XPUT 'localhost:9200/nested-data' -d '
 {
   "mappings": {
     "groups": {
@@ -171,15 +171,15 @@ curl -XPUT 'localhost:9200/sampledata' -d '
 ```
 * Re-populate sample data:
 ```
-curl -XPOST http://localhost:9200/_bulk -d '{"index":{"_index":"sampledata","_type":"groups", "_id":"fans"}}
+curl -XPOST http://localhost:9200/_bulk -d '{"index":{"_index":"nested-data","_type":"groups", "_id":"fans"}}
 {"group":"fans","members":[{"first":"John","last":"Smith"},{"first":"Alice","last":"White"}]}
-{"index":{"_index":"sampledata","_type":"groups", "_id":"supporters"}}
+{"index":{"_index":"nested-data","_type":"groups", "_id":"supporters"}}
 {"group":"supporters","members":[{"first":"Alice","last":"Smith"},{"first":"John","last":"White"}]}
 '
 ```
 * Re-run the query:
 ```
-curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
+curl -XPOST 'http://localhost:9200/nested-data/groups/_search?pretty=true' -d '
 {
   "query" : {
       "bool" : {
@@ -199,7 +199,7 @@ curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
 * What results did you get?
 * The reason for no results is that nested query uses different syntax:
 ```
-curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
+curl -XPOST 'http://localhost:9200/nested-data/groups/_search?pretty=true' -d '
 {
   "query": {
     "nested": {
@@ -231,7 +231,7 @@ curl -XPOST 'http://localhost:9200/sampledata/groups/_search?pretty=true' -d '
     "max_score" : 1.3862944,
     "hits" : [
       {
-        "_index" : "sampledata",
+        "_index" : "nested-data",
         "_type" : "groups",
         "_id" : "fans",
         "_score" : 1.3862944,

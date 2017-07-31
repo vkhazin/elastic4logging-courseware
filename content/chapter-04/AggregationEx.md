@@ -7,52 +7,45 @@
 ```
 sudo service elasticsearch restart
 ```
-* Populate few sample movie data:
+* Populate sample data:
 ```
-curl https://elasticsearch-courseware.icssolutions.ca/examples/data-sets/movies.txt -o movies.txt
-curl -XPOST 'localhost:9200/_bulk' --data-binary "@movies.txt"
+curl https://s3.us-east-2.amazonaws.com/elasticsearch-courseware/sample-data/logs.json -o logs.json
+curl -XPOST 'localhost:9200/_bulk' --data-binary "@logs.json"
 ```
 * Confirm there are some records to search on:
 ```
-curl 'localhost:9200/sample-data/movies/_search?pretty=true'
+curl 'http://localhost:9200/logstash*/_search?pretty=true'
 ```
-* Let's aggregate on actor name
+* Why there is a star after the index name?
+* Let's create date-time histogram using ```@timestamp``` field
 ```
-curl 'localhost:9200/sample-data/movies/_search?pretty=true' -d '
+curl 'http://localhost:9200/logstash*/_search?pretty=true' -d '
 {
   "size": 0,
   "aggs": {
-    "actor_name": {
-      "terms": {
-        "field": "Starring.CastCrewName.keyword"
+    "timestamp": {
+      "date_histogram": {
+      "field": "@timestamp",
+      "interval": "hour"
       }
     }
   }
 }'
 ```
 * What buckets did you get?
-* How do I get more than 10 buckets? <a href="http://stackoverflow.com/questions/22927098/show-all-elasticsearch-aggregation-results-buckets-and-not-just-10" target="_blank">Check StackOverflow posting!</a>
-* What is 'sum_other_doc_count' field?
-* Let's find out average movie rating for the actor:
+* Let's try ```terms``` aggregation:
 ```
-curl 'localhost:9200/sample-data/movies/_search?pretty=true' -d '
+curl 'http://localhost:9200/logstash*/_search?pretty=true' -d '
 {
   "size": 0,
   "aggs": {
-    "actor_name": {
+    "ip-addres": {
       "terms": {
-        "field": "Starring.CastCrewName.keyword"
-      },
-      "aggs": {
-        "rating": {
-          "avg": {
-            "field": "StarRating"
-          }
-        }
+      "field": "ip.keyword"
       }
     }
   }
-}
-'
+}'
 ```
+* Using elastic search on-line documentation find out what's ```doc_count_error_upper_bound``` and ```sum_other_doc_count```
 * Take a moment to understand the variety of <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html" target="_blank">aggregation types</a>
