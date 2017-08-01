@@ -1,20 +1,20 @@
 # Tile Map #
 
-//TODO: revise location and content of the sample file
+//TODO : validate steps in the lab
 
 * Possibly the most interesting visualization
 * Requires mappings to be configured with geo_point type
 * For previously populated log data cannot modify mapping for coordinates
 * We will have to delete the indices created, re-create indices with mapping, and to re-populate data
-* Shell script prepared for you <a href="../../examples/data-sets/geoMappings.sh">right-click and save</a>
+* Shell script prepared for you <a href="../../src/logMappings.sh">right-click and save</a>
 * Or download the script to the sandbox by running following command:
 ```
-curl -o geoMappings.sh https://elasticsearch-courseware-2d.icssolutions.ca/examples/data-sets/geoMappings.sh
+curl -o geoMappings.sh https://vkhazin.gitbooks.io/elastic4logging-courseware/src/logMappings.sh
 ```
 * ```chmod +x``` will be required to grant execution permission
 * Execute the script:
 ```
-./geoMappings.sh
+./logMappings.sh
 ```
 * Go back to Visualize tab and select 'Tile map'
 * Here it is a bit tricky - may need to go back to settings and refresh the fields

@@ -8,7 +8,7 @@ curl -XPOST 'localhost:9200/ordering/order/_search?pretty=true' -d '
   "aggregations": {
     "order-status": {
       "terms": {
-        "field": "status"
+        "field": "status.keyword"
       }
     }
   }
@@ -18,3 +18,4 @@ curl -XPOST 'localhost:9200/ordering/order/_search?pretty=true' -d '
 * "aggregations" or "aggs" - part of ElasticSearch Dsl
 * "order-status" - arbitrary name for aggregation
 * "terms" - type of aggregation to use
+* "status.keyword" - multi-field mapping for "status" property of json document

@@ -1,7 +1,5 @@
 # Aggregation Exercise #
 
-//TODO: Re-work exercise toward ip address and date histogram aggregation
-
 * Log-in into your ElasticSearch sandbox
 * Make sure elastic search is running:
 ```

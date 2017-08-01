@@ -1,11 +1,11 @@
 
 <!DOCTYPE HTML>
-<html lang="">
+<html lang="" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Nested Search Exercise &#xB7; GitBook</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Nested Search Exercise · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
         
@@ -49,7 +49,7 @@
         
     
     
-    <meta name="HandheldFriendly" content="true">
+    <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="TermsAggregation.html">
+    <link rel="next" href="TermsAggregation.html" />
     
     
-    <link rel="prev" href="NestedDatatypeQuery.html">
+    <link rel="prev" href="NestedDatatypeQuery.html" />
     
 
     </head>
@@ -71,7 +71,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -259,7 +259,7 @@
                 <a href="../chapter-01/Terminology-2.html">
             
                     
-                    Terminology Cont&apos;d
+                    Terminology Cont'd
             
                 </a>
             
@@ -552,7 +552,7 @@
                 <a href="../chapter-02/NotAnalyzedMultiField.html">
             
                     
-                    Not Analyzed &amp; Multi-Fields
+                    Not Analyzed & Multi-Fields
             
                 </a>
             
@@ -565,7 +565,7 @@
                 <a href="../chapter-02/NotAnalyzedMultiFieldEx.html">
             
                     
-                    Not Analyzed &amp; Multi-Fields Exercise
+                    Not Analyzed & Multi-Fields Exercise
             
                 </a>
             
@@ -624,7 +624,7 @@
                 <a href="../chapter-03/SearchDsl-2.html">
             
                     
-                    Search Dsl Cont&apos;d
+                    Search Dsl Cont'd
             
                 </a>
             
@@ -804,7 +804,7 @@
 
     
         
-        <li class="header">Chapter 4: Mapping &amp; Aggregations</li>
+        <li class="header">Chapter 4: Mapping & Aggregations</li>
         
         
     
@@ -938,12 +938,12 @@
             
         </li>
     
-        <li class="chapter " data-level="5.11" data-path="IpAddressAggregation.html">
+        <li class="chapter " data-level="5.11" data-path="IpRangeAggregation.html">
             
-                <a href="IpAddressAggregation.html">
+                <a href="IpRangeAggregation.html">
             
                     
-                    Ip Address Aggregation
+                    Ip Range Aggregation
             
                 </a>
             
@@ -1816,7 +1816,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../..">Nested Search Exercise</a>
+        <a href="../.." >Nested Search Exercise</a>
     </h1>
 </div>
 
@@ -1836,13 +1836,13 @@
 <li>Log-in into your ElasticSearch sandbox</li>
 <li>Make sure elastic search is running:<pre><code>sudo service elasticsearch restart
 </code></pre></li>
-<li>Populate sample data using <code>_bulk</code> api:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
+<li>Populate sample data using <code>_bulk</code> api:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;nested-data&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
 {&quot;group&quot;:&quot;fans&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;White&quot;}]}
-{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;nested-data&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
 {&quot;group&quot;:&quot;supporters&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;White&quot;}]}
 &apos;
 </code></pre></li>
-<li>Confirm data has been populated:<pre><code>curl &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos;
+<li>Confirm data has been populated:<pre><code>curl &apos;http://localhost:9200/nested-data/groups/_search?pretty=true&apos;
 </code></pre></li>
 <li>Expected result:<pre><code>{
 &quot;took&quot; : 2,
@@ -1857,7 +1857,7 @@
   &quot;max_score&quot; : 1.0,
   &quot;hits&quot; : [
     {
-      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_index&quot; : &quot;nested-data&quot;,
       &quot;_type&quot; : &quot;groups&quot;,
       &quot;_id&quot; : &quot;supporters&quot;,
       &quot;_score&quot; : 1.0,
@@ -1876,7 +1876,7 @@
       }
     },
     {
-      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_index&quot; : &quot;nested-data&quot;,
       &quot;_type&quot; : &quot;groups&quot;,
       &quot;_id&quot; : &quot;fans&quot;,
       &quot;_score&quot; : 1.0,
@@ -1898,7 +1898,7 @@
 }
 }
 </code></pre></li>
-<li>Let&apos;s find group with <code>John Smith</code> in it:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+<li>Let&apos;s find group with <code>John Smith</code> in it:<pre><code>curl -XPOST &apos;http://localhost:9200/nested-data/groups/_search?pretty=true&apos; -d &apos;
 {
 &quot;query&quot; : {
     &quot;bool&quot; : {
@@ -1928,7 +1928,7 @@
   &quot;max_score&quot; : 0.51623213,
   &quot;hits&quot; : [
     {
-      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_index&quot; : &quot;nested-data&quot;,
       &quot;_type&quot; : &quot;groups&quot;,
       &quot;_id&quot; : &quot;supporters&quot;,
       &quot;_score&quot; : 0.51623213,
@@ -1947,7 +1947,7 @@
       }
     },
     {
-      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_index&quot; : &quot;nested-data&quot;,
       &quot;_type&quot; : &quot;groups&quot;,
       &quot;_id&quot; : &quot;fans&quot;,
       &quot;_score&quot; : 0.51623213,
@@ -1971,9 +1971,9 @@
 </code></pre></li>
 <li>Is that the expected result from the human perspective?</li>
 <li>To address the imperfection in the results we will recreate the index with nested mapping</li>
-<li>Delete the index:<pre><code>curl -XDELETE &apos;localhost:9200/sampledata&apos;
+<li>Delete the index:<pre><code>curl -XDELETE &apos;localhost:9200/nested-data&apos;
 </code></pre></li>
-<li>Re-create the index with mapping for nested type:<pre><code>curl -XPUT &apos;localhost:9200/sampledata&apos; -d &apos;
+<li>Re-create the index with mapping for nested type:<pre><code>curl -XPUT &apos;localhost:9200/nested-data&apos; -d &apos;
 {
 &quot;mappings&quot;: {
   &quot;groups&quot;: {
@@ -1986,13 +1986,13 @@
 }
 }&apos;
 </code></pre></li>
-<li>Re-populate sample data:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
+<li>Re-populate sample data:<pre><code>curl -XPOST http://localhost:9200/_bulk -d &apos;{&quot;index&quot;:{&quot;_index&quot;:&quot;nested-data&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;fans&quot;}}
 {&quot;group&quot;:&quot;fans&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;White&quot;}]}
-{&quot;index&quot;:{&quot;_index&quot;:&quot;sampledata&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;nested-data&quot;,&quot;_type&quot;:&quot;groups&quot;, &quot;_id&quot;:&quot;supporters&quot;}}
 {&quot;group&quot;:&quot;supporters&quot;,&quot;members&quot;:[{&quot;first&quot;:&quot;Alice&quot;,&quot;last&quot;:&quot;Smith&quot;},{&quot;first&quot;:&quot;John&quot;,&quot;last&quot;:&quot;White&quot;}]}
 &apos;
 </code></pre></li>
-<li>Re-run the query:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+<li>Re-run the query:<pre><code>curl -XPOST &apos;http://localhost:9200/nested-data/groups/_search?pretty=true&apos; -d &apos;
 {
 &quot;query&quot; : {
     &quot;bool&quot; : {
@@ -2010,7 +2010,7 @@
 }&apos;
 </code></pre></li>
 <li>What results did you get?</li>
-<li>The reason for no results is that nested query uses different syntax:<pre><code>curl -XPOST &apos;http://localhost:9200/sampledata/groups/_search?pretty=true&apos; -d &apos;
+<li>The reason for no results is that nested query uses different syntax:<pre><code>curl -XPOST &apos;http://localhost:9200/nested-data/groups/_search?pretty=true&apos; -d &apos;
 {
 &quot;query&quot;: {
   &quot;nested&quot;: {
@@ -2040,7 +2040,7 @@
   &quot;max_score&quot; : 1.3862944,
   &quot;hits&quot; : [
     {
-      &quot;_index&quot; : &quot;sampledata&quot;,
+      &quot;_index&quot; : &quot;nested-data&quot;,
       &quot;_type&quot; : &quot;groups&quot;,
       &quot;_id&quot; : &quot;fans&quot;,
       &quot;_score&quot; : 1.3862944,
@@ -2072,13 +2072,13 @@
     <div class="search-results">
         <div class="has-results">
             
-            <h1 class="search-results-title"><span class="search-results-count"></span> results matching &quot;<span class="search-query"></span>&quot;</h1>
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
             <ul class="search-results-list"></ul>
             
         </div>
         <div class="no-results">
             
-            <h1 class="search-results-title">No results matching &quot;<span class="search-query"></span>&quot;</h1>
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
             
         </div>
     </div>
@@ -2107,38 +2107,10 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-07-28T22:37:43.977Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-28T22:46:12.516Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Nested Search Exercise","level":"5.5","depth":1,"next":{"title":"Terms Aggregation","level":"5.6","depth":1,"path":"content/chapter-04/TermsAggregation.md","ref":"./content/chapter-04/TermsAggregation.md","articles":[]},"previous":{"title":"Nested Datatype Query","level":"5.4","depth":1,"path":"content/chapter-04/NestedDatatypeQuery.md","ref":"./content/chapter-04/NestedDatatypeQuery.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["footer","livereload"],"pluginsConfig":{"livereload":{},"search":{},"layout":{"footerPath":"layouts/footer.html"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"token":"UA-99005189-1"},"footer":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/chapter-04/NestedSearchEx.md","mtime":"2017-08-01T02:45:43.745Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-08-01T02:45:49.953Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
-</div><center>
-   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
-      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
-   </a>
-   <br>
-   <div>
-     Last modified: <a id="timestampvalue"></a>
-   </div>
-</center>
-
-<script type="text/javascript">
-  var timestamp = new Date(document.lastModified).toISOString();
-  document.getElementById("timestampvalue").textContent = timestamp;
-</script>
-<center>
-   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
-      <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png">
-   </a>
-   <br>
-   <div>
-     Last modified: <a id="timestampvalue"></a>
-   </div>
-</center>
-
-<script type="text/javascript">
-  var timestamp = new Date(document.lastModified).toISOString();
-  document.getElementById("timestampvalue").textContent = timestamp;
-</script>
-
+</div>
 
         
     <script src="../../gitbook/gitbook.js"></script>

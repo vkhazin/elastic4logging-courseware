@@ -71,7 +71,7 @@
 * [Nested Aggregation Query](./content/chapter-04/NestedAggregationQuery.md)
 * [Nested Aggregation Results](./content/chapter-04/NestedAggregationResults.md)
 * [Date Histogram Aggregation](./content/chapter-04/DateHistogramAggregation.md)
-* [Ip Address Aggregation](./content/chapter-04/IpAddressAggregation.md)
+* [Ip Range Aggregation](./content/chapter-04/IpRangeAggregation.md)
 * [Range Aggregation](./content/chapter-04/RangeAggregation.md)
 * [Aggregation Exercise](./content/chapter-04/AggregationEx.md)
 * [Summary](./content/chapter-04/Summary.md)
