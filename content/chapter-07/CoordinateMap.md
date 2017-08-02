@@ -1,4 +1,4 @@
-# Tile Map #
+# Coordinate Map #
 
 //TODO : validate steps in the lab
 
@@ -9,14 +9,14 @@
 * Shell script prepared for you <a href="../../src/logMappings.sh">right-click and save</a>
 * Or download the script to the sandbox by running following command:
 ```
-curl -o geoMappings.sh https://vkhazin.gitbooks.io/elastic4logging-courseware/src/logMappings.sh
+curl -o logMappings.sh https://vkhazin.gitbooks.io/elastic4logging-courseware/src/logMappings.sh
 ```
 * ```chmod +x``` will be required to grant execution permission
 * Execute the script:
 ```
 ./logMappings.sh
 ```
-* Go back to Visualize tab and select 'Tile map'
+* Go back to Visualize tab and select 'Coordinate map'
 * Here it is a bit tricky - may need to go back to settings and refresh the fields
 * Select 'Geo Coordinates' and select 'geo.coordinates' field
 * Select 'green arrow' on top to apply changes and explore zoom in/out

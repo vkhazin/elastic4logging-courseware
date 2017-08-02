@@ -107,7 +107,7 @@
 * [Vertical Bar Chart](./content/chapter-07/VerticalBarChart.md)
 * [Vertical Bar Chart Exercise](./content/chapter-07/VerticalBarChartEx.md)
 * [Tag Cloud](./content/chapter-07/TagCloud.md)
-* [Tile Map](./content/chapter-07/TileMap.md)
+* [Coordinate Map](./content/chapter-07/CoordinateMap.md)
 * [Dashboard](./content/chapter-07/Dashboard.md)
 * [Timelion](./content/chapter-07/Timelion.md)
 * [Timelion Exercise](./content/chapter-07/TimelionEx.md)
@@ -116,7 +116,10 @@
 
 ## Chapter 8: Watcher ##
 * [Introduction](./content/chapter-08/Intro.md)
-
+* [X-Pack Exercise](./content/chapter-08/XPackEx.md)
+* [Components](./content/chapter-08/Components.md)
+* [Watcher Definitions](./content/chapter-08/WatcherDefinitions.md)
+* [Watcher Exercise](./content/chapter-08/WatcherEx.md)
 * [Summary](./content/chapter-08/Summary.md)
 
 ## Chapter 9: Preparing for Production
@@ -129,7 +132,7 @@
 * [Performance Testing](./content/chapter-09/PerformanceTesting.md)
 * [Monitoring](./content/chapter-09/Monitoring.md)
 * [Monitoring Plug-ins](./content/chapter-09/MonitoringPlugins.md)
-* [X-Pack Exercise](./content/chapter-09/XPackEx.md)
+
 * [Performance Tuning](./content/chapter-09/PerformanceTuning.md)
 * [Indices vs. Types](./content/chapter-09/IndexType.md)
 * [Query Choices](./content/chapter-09/QueryChoices.md)
