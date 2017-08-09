@@ -116,8 +116,8 @@
 
 ## Chapter 8: Watcher ##
 * [Introduction](./content/chapter-08/Intro.md)
-* [X-Pack Exercise](./content/chapter-08/XPackEx.md)
-* [Components](./content/chapter-08/Components.md)
+* [X-Pack Setup Exercise](./content/chapter-08/XPackEx.md)
+* [Watcher Components](./content/chapter-08/WatcherComponents.md)
 * [Watcher Definitions](./content/chapter-08/WatcherDefinitions.md)
 * [Watcher Exercise](./content/chapter-08/WatcherEx.md)
 * [Summary](./content/chapter-08/Summary.md)

@@ -38,3 +38,4 @@
   * <a href="http://grokconstructor.appspot.com/do/construction" target="_blank">grok constructor</a>
   * <a href="http://grokdebug.herokuapp.com/" target="_blank">grok debugger<a/>
   * <a href="https://regex101.com/" target="_blank">regex tester</a>
+  * Grog Debugger available from Kibana UI after X-Pack is installed using 'Dev Tools' link

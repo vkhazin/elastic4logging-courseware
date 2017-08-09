@@ -30,3 +30,6 @@ sudo service elasticsearch start && sudo service kibana start
 * Navigate to http://domain-name:5601
 * Login with default credentials: elastic/changeme
 * Explore the 'Monitoring' and 'Management' links
+* Now, we broke things, let's fix them:
+  * Logstash config needs credentials
+  * Filebeat config needs credentials

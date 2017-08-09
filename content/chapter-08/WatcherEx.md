@@ -1,8 +1,42 @@
 # Watcher Exercise #
 
-* Double-check ElasticSearch and Kibana are running:
+* Double-check ElasticSearch, Filebat and Kibana are running:
 ```
-sudo service kibana start && sudo service elasticsearch start
+sudo service kibana start && sudo service filebeat start && sudo service elasticsearch start
 ```
 * Navigate to http://domain-name:5601
 * Login with default credentials: elastic/changeme
+* Navigate to Management -> Elasticsearch -> Watcher
+* Select 'Add' to create new Watch
+* Definitions are using json document - no wizard, at least for now
+* First is trigger, let's set interval to 30s
+* Second is a query to execute, duplicate browser tab and use Dev Tools for composing query, e.g.:
+```
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": {
+        "query_string": {
+          "query": "@timestamp:[now-1h TO now]"
+        }
+      }
+    }
+  }
+}
+```
+* Execute the query to make sure it produces results
+* Replace ```input.search.request.body``` portion of the watcher configuration with the query tested in the console
+* Modify ```'indices``` portion of the input to list: ```filebeat*```
+* Review condition portion of the json configuration
+* Type-in new watch id and name
+* Simulate the new watch to review results
+* And save the new watch
+* Give it 30 secs to fire
+* Now how do we make use of the results?
+* First find what index stores the data
+* Then define a new index pattern
+* Use discover to explore the data
+* Proceed to Visualization tab to present results
+* Please share your findings and visualization selection with others
+* Explore [other actions](https://www.elastic.co/guide/en/x-pack/current/actions.html) available in the watcher

@@ -1,4 +1,4 @@
-# Components #
+# Watcher Components #
 
 * Simple User interface accessible from Kibana to create, view, and manage alerts
 * Alert history is stored inside Elastic Search for Kibana visualization and historical analysis

@@ -1,7 +1,7 @@
 curl https://s3.us-east-2.amazonaws.com/elasticsearch-courseware/sample-data/logs.json -o logs.json
 
-curl -XDELETE localhost:9200/logstash-2015.05.20
-curl -XPUT localhost:9200/logstash-2015.05.20 -d '
+curl -XDELETE 'http://elastic:changeme@localhost:9200/logstash-2015.05.20'
+curl -XPUT 'http://elastic:changeme@localhost:9200/logstash-2015.05.20' -d '
 {
   "mappings": {
     "log": {
@@ -24,8 +24,8 @@ curl -XPUT localhost:9200/logstash-2015.05.20 -d '
   }
 }'
 
-curl -XDELETE localhost:9200/logstash-2015.05.18
-curl -XPUT localhost:9200/logstash-2015.05.18 -d '
+curl -XDELETE 'http://elastic:changeme@localhost:9200/logstash-2015.05.20'
+curl -XPUT 'http://elastic:changeme@localhost:9200/logstash-2015.05.20' -d '
 {
   "mappings": {
     "log": {
@@ -48,8 +48,8 @@ curl -XPUT localhost:9200/logstash-2015.05.18 -d '
   }
 }'
 
-curl -XDELETE localhost:9200/logstash-2015.05.19
-curl -XPUT localhost:9200/logstash-2015.05.19 -d '
+curl -XDELETE 'http://elastic:changeme@localhost:9200/logstash-2015.05.20'
+curl -XPUT 'http://elastic:changeme@localhost:9200/logstash-2015.05.20' -d '
 {
   "mappings": {
     "log": {
@@ -72,4 +72,4 @@ curl -XPUT localhost:9200/logstash-2015.05.19 -d '
   }
 }'
 
- curl -XPUT localhost:9200/_bulk --data-binary "@./logs.json"
+ curl -XPUT 'http://elastic:changeme@localhost:9200/_bulk --data-binary "@./logs.json"
