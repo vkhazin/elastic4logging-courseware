@@ -1,7 +1,5 @@
 # Coordinate Map #
 
-//TODO : validate steps in the lab
-
 * Possibly the most interesting visualization
 * Requires mappings to be configured with geo_point type
 * For previously populated log data cannot modify mapping for coordinates
@@ -21,4 +19,4 @@ curl -o logMappings.sh https://vkhazin.gitbooks.io/elastic4logging-courseware/sr
 * Select 'Geo Coordinates' and select 'geo.coordinates' field
 * Select 'green arrow' on top to apply changes and explore zoom in/out
 * Switch to advanced options and check-out <a href="https://en.wikipedia.org/wiki/Web_Map_Service" target="_blank">wms</a>
-* There are <a href="https://www.elastic.co/elastic-tile-service" target="_blank">terms of service</a> for the tile service apparently separate from the elastic search product, go figure...
+* There are <a href="https://www.elastic.co/elastic-maps-service" target="_blank">terms of service</a> for the maps service apparently separate from the elastic search product, go figure...

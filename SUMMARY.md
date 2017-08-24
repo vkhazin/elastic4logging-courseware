@@ -94,7 +94,7 @@
 * [Filebeat Exercise](./content/chapter-06/FilebeatEx.md)
 * [Summary](./content/chapter-06/Summary.md)
 
-## Chapter 7: Kibana 5 ##
+## Chapter 7: Kibana ##
 * [Introduction](./content/chapter-07/Intro.md)
 * [Setup](./content/chapter-07/Setup.md)
 * [Sample Data Setup](./content/chapter-07/SampleDataSetup.md)
@@ -132,7 +132,6 @@
 * [Performance Testing](./content/chapter-09/PerformanceTesting.md)
 * [Monitoring](./content/chapter-09/Monitoring.md)
 * [Monitoring Plug-ins](./content/chapter-09/MonitoringPlugins.md)
-
 * [Performance Tuning](./content/chapter-09/PerformanceTuning.md)
 * [Indices vs. Types](./content/chapter-09/IndexType.md)
 * [Query Choices](./content/chapter-09/QueryChoices.md)
