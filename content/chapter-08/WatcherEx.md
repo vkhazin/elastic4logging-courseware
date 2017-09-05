@@ -27,7 +27,7 @@ sudo service kibana start && sudo service filebeat start && sudo service elastic
 ```
 * Execute the query to make sure it produces results
 * Replace ```input.search.request.body``` portion of the watcher configuration with the query tested in the console
-* Modify ```'indices``` portion of the input to list: ```filebeat*```
+* Modify ```indices``` portion of the input to list: ```filebeat*```
 * Review condition portion of the json configuration
 * Type-in new watch id and name
 * Simulate the new watch to review results
