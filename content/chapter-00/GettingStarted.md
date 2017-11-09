@@ -2,7 +2,7 @@
 
 <p align="right"><i><a href="https://www.linkedin.com/in/vkhazin" target="_blank">by Vlad Khazin</a></i></p>
 * Course materials can be accessed [online1](https://vkhazin.gitbooks.io/elastic4logging-courseware/) or [online2](https://elastic4logging-courseware.netlify.com/)
-* If you did not have a chance to fill-out <a target="_blank" href="https://www.surveymonkey.com/r/">pre-course survey, please do so now</a>
+* If you did not have a chance to fill-out <a target="_blank" href="https://www.surveymonkey.com/r/8Y73NL5">pre-course survey, please do so now</a>
 * If you have not provided your public ssh key via email to configure access to your private sandbox, please do so now
   * <a href="https://docs.joyent.com/public-cloud/getting-started/ssh-keys/generating-an-ssh-key-manually" target="_blank">How to generate public/private key</a>
   * Email public key to <a href="mailto:vladimir.khazin@icssolutions.ca">vladimir.khazin@icssolutions.ca</a>
