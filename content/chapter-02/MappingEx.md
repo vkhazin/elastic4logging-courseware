@@ -5,10 +5,6 @@
 ```
 sudo service elasticsearch restart
 ```
-* We have not yet configured elasticsearch service to start automatically, start using terminal window:
-```
-sudo service elasticsearch start
-```
 * Service will start but listener will take its time before responding to incoming requests:
 ```
 curl localhost:9200
