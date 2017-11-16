@@ -12,4 +12,4 @@ elasticsearch.url: "http://localhost:9200"
 * Additional settings are detailed <a href="https://github.com/elastic/kibana/blob/master/config/kibana.yml" target="_blank">here</a>
 * Kibana can be installed on the same nodes where Elastic Search is running, or on separate nodes
 * Kibana stores its configuration data in ElasticSearch 
-* Accessing Kibana from browser: http://domain-name:5601
+* Accessing Kibana from browser: http://ip-address:5601/

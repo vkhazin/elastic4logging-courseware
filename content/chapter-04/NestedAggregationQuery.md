@@ -8,7 +8,7 @@ curl -XPOST 'localhost:9200/ordering/order/_search?pretty=true' -d '
   "aggs": {
     "order-status": {
       "terms": {
-      "field": "status"
+        "field": "status.keyword"
       },
       "aggs": {
         "placedOnMonth": {

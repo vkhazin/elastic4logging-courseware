@@ -4,7 +4,7 @@
 ```
 sudo service kibana start && sudo service filebeat start && sudo service elasticsearch start
 ```
-* Navigate to http://domain-name:5601
+* Navigate to http://ip-address:5601/
 * Login with default credentials: elastic/changeme
 * Navigate to Management -> Elasticsearch -> Watcher
 * Select 'Add' to create new Watch

@@ -35,7 +35,7 @@ sudo nano /etc/kibana/kibana.yml
 ```
 sudo service kibana restart
 ```
-* Open browser to http://domain-name:5601, where domain name is the same as for ssh connection
+* Open browser to http://ip-address:5601, where ip address is the same as for the ssh connection
 * Kibana requires configuration before it display data: index name pattern is required
 * To find out what indices we have in the cluster:
 ```
