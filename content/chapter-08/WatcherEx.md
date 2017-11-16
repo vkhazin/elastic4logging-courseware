@@ -35,7 +35,7 @@ sudo service kibana start && sudo service filebeat start && sudo service elastic
 * Give it 30 secs to fire
 * Now how do we make use of the results?
 * First find what index stores the data
-* Then define a new index pattern
+* Then define a new index pattern using the Management link on the left
 * Use discover to explore the data
 * Proceed to Visualization tab to present results
 * Please share your findings and visualization selection with others
