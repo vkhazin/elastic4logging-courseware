@@ -16,7 +16,11 @@ document-data\n
 ```
 * Sample body:
 ```
-{"index":{"_index":"logstash-2015.05.18","_type":"log"}}
+{"index":{"_index":"logstash-2015.05.18","_type":"doc"}}
 {"@timestamp":"2015-05-18T09:03:25.877Z","ip":"185.124.182.126","response":"404"}
+{"index":{"_index":"logstash-2015.05.18","_type":"doc"}}
+{"@timestamp":"2015-05-18T09:03:26.877Z","ip":"185.124.182.121","response":"200"}
+{"index":{"_index":"logstash-2015.05.18","_type":"doc"}}
+{"@timestamp":"2015-05-18T09:03:27.877Z","ip":"185.124.182.122","response":"200"}
 ```
 * Psst: don't forget new line at the end of file!
