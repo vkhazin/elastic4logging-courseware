@@ -1,13 +1,13 @@
 # Shrink Index #
 
 * Number of shards cannot be changed after index has been created, but...
-* New in version 5.x - index can be shrunk to smaller number of shards
+* Sice version 5.x - index can be shrunk to smaller number of shards
 * Index must be in good health and in read-only state, can be achieved with following request:
 ```
 PUT /index-name/_settings
 {
   "settings": {
-    "index.routing.allocation.require._name": "new-node-name", 
+    "index.routing.allocation.require._name": "shrink_node_name", 
     "index.blocks.write": true 
   }
 }
