@@ -8,7 +8,7 @@ curl  -H 'Content-Type: application/json' -XPOST localhost:9200/ordering/doc/1 -
 ```
 * To retrieve the document just posted:
 ```
-curl 'localhost:9200/ordering/_search?pretty=true'
+curl 'localhost:9200/ordering/_search?pretty'
 ```
 * Expected result:
 ```

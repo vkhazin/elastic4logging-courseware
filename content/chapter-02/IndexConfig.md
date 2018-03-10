@@ -15,6 +15,6 @@ curl -H 'Content-Type: application/json' -XPUT 'localhost:9200/ordering' -d '
 	}
 }'
 ```
-NOTE: Starting version 6 header must be provided with curl command: `-H 'Content-Type: application/json'`  
+NOTE: Starting version 6 header for PUT method must be provided with curl command: `-H 'Content-Type: application/json'`  
 
 * Do you recall discussion about multi-index search capabilities?

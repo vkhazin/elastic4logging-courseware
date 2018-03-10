@@ -19,7 +19,7 @@ curl -H 'Content-Type: application/json' -XPOST localhost:9200/ordering/doc/1 -d
 ```
 * Fetch mapping:
 ```
-curl 'localhost:9200/ordering/doc/_mapping?pretty=true'
+curl 'localhost:9200/ordering/doc/_mapping?pretty'
 ```
 * Expected response:
 ```

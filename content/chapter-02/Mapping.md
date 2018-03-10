@@ -7,12 +7,12 @@
 * Existing field mapping not always possible to modify
 * Elasticsearch will derive mapping for new fields:
 ```
-curl -H 'Content-Type: application/json' -XPOST localhost:9200/doc/1 -d '
+curl -H 'Content-Type: application/json' -XPOST localhost:9200/ordering/doc/1 -d '
 {"id": "1", "placedOn": "2016-10-17T13:03:30.830Z"}'
 ```
 * Retrieving existing mappings:
 ```
-curl 'localhost:9200/ordering/doc/_mapping?pretty=true'
+curl 'localhost:9200/ordering/doc/_mapping?pretty'
 ```
 * Expected response:
 ```

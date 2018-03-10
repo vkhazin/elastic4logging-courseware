@@ -3,11 +3,11 @@
 * Login into you virtual box
 * Delete previously created index and its mapping:
 ```
-curl -XDELETE 'localhost:9200/ordering?pretty=true'
+curl -XDELETE 'localhost:9200/ordering?pretty'
 ```
 * Post new document:
 ```
-curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?pretty=true' -d \
+curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?pretty' -d \
 '{"id": "1", "placedOn": "2016-10-17T13:03:30.830Z"}'
 ```
 * Fetch mapping:
@@ -67,7 +67,7 @@ curl -H 'Content-Type: application/json' -XPUT 'localhost:9200/ordering/doc/_map
 ```
 * Populate new order with spaces in id and trackingId fields/properties:  
 ```
-curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?pretty=true' -d \
+curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?pretty' -d \
 '{
   "id": "orderId with spaces", 
   "placedOn": "2016-10-17T13:03:30.830Z",
@@ -76,7 +76,7 @@ curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?p
 ```  
 * Let's run first search:
 ```
-curl 'localhost:9200/ordering/doc/_search?pretty=true&q=id:orderId'
+curl 'localhost:9200/ordering/doc/_search?pretty&q=id:orderId'
 ```
 * Did you get any results?
 * Let's run second search:
@@ -115,7 +115,7 @@ curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/ordering/doc/1?p
 ```
 * Let's search for the street name:
 ```
-curl 'localhost:9200/ordering/doc/_search?pretty=true&q=streetName:name'
+curl 'localhost:9200/ordering/doc/_search?pretty&q=streetName:name'
 ```
 * Let's search for the street name on not-parsed field:
 ```
@@ -123,6 +123,6 @@ curl 'localhost:9200/ordering/doc/_search?pretty=true&q=streetName.notparsed:nam
 ```
 * Let's search for the street name on not-parsed field again:
 ```
-curl 'localhost:9200/ordering/doc/_search?pretty=true&q=streetName.notparsed:name%20with%20spaces'
+curl 'localhost:9200/ordering/doc/_search?pretty&q=streetName.notparsed:name%20with%20spaces'
 ```
 * What are results in the search #1, #2, and #3; and what is the reason for these results?
