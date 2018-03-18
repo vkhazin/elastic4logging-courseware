@@ -1,10 +1,6 @@
 # Index Configuration #
 
-* elasticsearch.yml defines defaults for index configuration:
-```
-index.number_of_shards: 5
-index.number_of_replicas: 1
-```
+* By default each new index has 5 shards and 1 replica
 * Each index can be configured with desired number of shard during creation:
 ```
 curl -H 'Content-Type: application/json' -XPUT 'localhost:9200/ordering' -d '
