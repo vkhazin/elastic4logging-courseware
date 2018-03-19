@@ -5,7 +5,7 @@
   ```
   2017-06-21 22:18:25,276 - util.py[DEBUG]: Reading from /proc/uptime (quiet=False)
   ```
-* <a href="https://github.com/elastic/logstash/blob/v1.4.0/patterns/grok-patterns" target="_blank">Predefined match patterns</a>
+* <a href="https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns" target="_blank">Predefined match patterns</a>
 * <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#_custom_patterns" target="_blank">Custom parse patterns</a> added:
   ```
   For module: (?<= - )(.+)(?=\[)
@@ -38,4 +38,4 @@
   * <a href="http://grokconstructor.appspot.com/do/construction" target="_blank">grok constructor</a>
   * <a href="http://grokdebug.herokuapp.com/" target="_blank">grok debugger<a/>
   * <a href="https://regex101.com/" target="_blank">regex tester</a>
-  * Kibana <a href="https://www.elastic.co/guide/en/kibana/current/grokdebugger-getting-started.html">Grok Debugger</a> (as part of X-Pack)
+  * Kibana <a href="https://www.elastic.co/guide/en/kibana/current/grokdebugger-getting-started.html">Grok Debugger</a> (as a part of X-Pack)

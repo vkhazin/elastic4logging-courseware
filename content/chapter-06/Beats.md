@@ -1,7 +1,7 @@
 # Beats
 
 * Lightweight Data Shippers
-* Installed as Agents to send data at high speed to Logstash or to ElasticSearch
+* Installed as Agents to send data at high speed to Logstash or to Elasticsearch
 * Filebeat is offering a lightweight way to forward and centralize logs and files
 * Metricbeat collects metrics from systems and services using specific modules
 * Packetbeat is a lightweight network packet analyzer that sends data
